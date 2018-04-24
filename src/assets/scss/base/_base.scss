@@ -1,0 +1,38 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 10px;
+}
+
+body {
+  font-family: "Exo 2";
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+.container {
+  width: 100%;
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+.section {
+  padding: 5rem 0;
+  &__title {
+    margin-bottom: 7.5rem;
+
+    font-size: 3.6rem;
+    font-weight: 400;
+    letter-spacing: 5px;
+  }
+}
+
+.attention {
+  color: $primary-color;
+}

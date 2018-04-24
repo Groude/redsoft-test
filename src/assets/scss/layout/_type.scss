@@ -1,0 +1,96 @@
+.type {
+
+  &__list {
+    display: flex;
+    align-items: stretch;
+
+    list-style: none;
+  }
+
+  &__item {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    min-height: 40rem;
+    padding-left: 8rem;
+    padding-right: 8rem;
+
+    background-color: $type-item-bg;
+
+    &--attention {
+      background-image: url("../../images/type/rent.png");
+      background-position: center center;
+      background-repeat: no-repeat;
+      box-shadow: -2px 17px 25px -12px rgba(0, 0, 0, 0.4);
+
+      color: #fff;
+
+      &::before {
+        content: "";
+  
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+  
+        width: 100%;
+        max-width: calc(100% - 10rem);
+        height: 100%;
+        max-height: calc(100% - 4rem);
+        margin: 0 auto;
+  
+        border: 2px solid #fff;
+      }
+    }
+  }
+}
+
+.item {
+  &__number {
+    align-self: flex-end;
+    color: $type-item-number;
+    font-size: 10.8rem;
+
+    &--attention {
+      color: #fff;
+    }
+  }
+
+  &__title {
+    align-self: flex-start;
+    margin-bottom: 4.5rem;
+
+    font-size: 2.4rem;
+    font-weight: 400;
+  }
+
+  &__text {
+    line-height: 1.8;
+  }
+}
+
+@media (min-width: 2560px) {
+  .type {
+    &__item {
+      &--attention {
+        background-size: cover;
+        box-shadow: -2px 17px 10px -15px rgba(0, 0, 0, 0.4);
+      }
+    }
+  } 
+}
+
+@media (max-width: 1440px) {
+  .type {
+    &__item {
+        padding-left: 6rem;
+        padding-right: 6rem;
+        &--attention {
+          &::before {
+            max-width: calc(100% - 6rem);
+          }
+        }
+    }
+  }
+}
