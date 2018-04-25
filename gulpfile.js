@@ -7,18 +7,27 @@ var gulpIf = require('gulp-if');
 var cssnano = require('gulp-cssnano');
 var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
+var plumber = require('gulp-plumber');
+var autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('sass', function() {
   return gulp.src('src/assets/scss/**/*.scss')
-    .pipe(sass())
+    .pipe(plumber())
+    .pipe(sass({errLogToConsole: true}))
+    .on('error', catchErr)
     .pipe(gulp.dest('src/assets/css'))
     .pipe(browserSync.reload({
       stream: true
     }))
 });
 
+function catchErr(e) {
+  console.log(e);
+  this.emit('end');
+}
+
 gulp.task('watch', ['browserSync', 'sass'], function (){
-  gulp.watch('src/assets//scss/**/*.scss', ['sass']);
+  gulp.watch('src/assets/scss/**/*.scss', ['sass']);
   gulp.watch('src/*.html', browserSync.reload);
   gulp.watch('src/assets/js/**/*.js', browserSync.reload);
 });
@@ -52,3 +61,12 @@ gulp.task('fonts', function() {
   return gulp.src('src/assets/fonts/**/*')
   .pipe(gulp.dest('build/fonts'))
 })
+
+gulp.task('autoprefixer', function() {
+  return gulp.src('src/assets/css/style.css')
+  .pipe(autoprefixer({
+    browsers: ['last 2 versions'],
+    cascade: false
+  }))
+  .pipe(gulp.dest('src/assets/css'))
+});
