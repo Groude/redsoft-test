@@ -53,6 +53,17 @@
   }
 }
 
+@media (min-width: 2500px) {
+  .about {
+    &__btn {
+      &--big {
+        max-width: 120rem;
+        padding-left: calc(72.5% - 1160px);
+      }
+    }
+  }
+}
+
 @media (max-width: 1680px) {
   .about {
     &__col {
@@ -62,17 +73,6 @@
     &__btn--big {
       max-width: 70rem;
       padding-left: calc(84% - 1160px);
-    }
-  }
-}
-
-@media (min-width: 2560px) {
-  .about {
-    &__btn {
-      &--big {
-        max-width: 120rem;
-        padding-left: calc(72.5% - 1160px);
-      }
     }
   }
 }
